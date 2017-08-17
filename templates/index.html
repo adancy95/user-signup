@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign UP</title>
+</head>
+<body>
+    <p>
+        <h1> Sign Up </h1> 
+    </p>
+    <form action="/valid", method="POST">
+        <label for="username"> Username: </label>
+        <input type = "text" name="username" id="username" value="{{username}}"/>
+        <p>{{username_error}} </p>
+        <br>
+
+        <label for="password"> Password: </label>
+        <input type = "password" name="password" id="password"/>
+        <p> {{password_error}}</p>
+        <br>
+
+        <label for="pass_conf"> Confirm Password: </label>
+        <input type ="password" name="pass_conf" id="pass_conf"/>
+        <p></p>
+        <br>
+
+        <label for="email"> Email: </label>
+        <input type="text" name ="email" id ="email" value="{{email}}" />
+        <p>{{email_error}}</p>
+        <br>
+        
+        <input type="submit" name="submit"/>
+    </form>
+</body>
+</html>
