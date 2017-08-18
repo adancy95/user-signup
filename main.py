@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect
 import os
 import jinja2
+import string
 
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir))
@@ -14,11 +15,9 @@ def index():
     template = jinja_env.get_template('index.html')
     return template.render()
 
-def length(parameter, parameter2):
+def length(parameter):
     """checks the number of characters in the user input fields"""
     if len(parameter) >= 3 and len(parameter) <= 20:
-        return True
-    elif parameter2 == "email" and parameter != "":
         return True
 
 def no_space(parameter):
@@ -44,18 +43,18 @@ def valid():
     pass_conf = request.form['pass_conf']
     email = request.form['email']
 
-    if length(username, "username") and no_space(username):
+    if length(username) and no_space(username):
         username_error = ""
     else:
         username_error = "Not a valid username"
 
-    if length(password, "password") and no_space(password) and confirmation(password, pass_conf):
+    if length(password) and no_space(password) and confirmation(password, pass_conf):
         password_error = ""
     elif not confirmation(password, pass_conf):
         password_error = "Passwords do not match"
     else:
         password_error = "Not a valid password" 
-    if length(email, "email") and email_symbol(email):
+    if email == "" or length(email) and email_symbol(email):
         email_error = ""
     else:
         email_error = "Not a valid email"
